@@ -1,0 +1,14 @@
+# Byte-compiled Python files
+*.py[cod]
+__pycache__/
+
+# Virtual environment
+.venv/
+
+# PyCharm project files
+.idea/
+*.iml
+*.iws
+
+# MacOS specific files
+.DS_Store
