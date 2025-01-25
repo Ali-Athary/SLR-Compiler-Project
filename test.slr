@@ -1,0 +1,24 @@
+topic "Artificial Intelligence"
+search {
+    query ["AI", "machine learning", "deep learning"]
+    year_range 2000 to 2023
+    max_results 100
+}
+filters {
+    exclude_keywords ["beginner", "introductory"]
+    min_pages 5
+    languages ["en", "fa"]
+}
+analyze {
+    summarize {
+        method "gpt-4"
+        max_length 300
+    }
+    extract_fields ["title", "authors", "abstract", "journal"]
+    keyword_cloud true
+}
+report {
+    format "markdown"
+    include_metadata true
+    output_path "/reports/ai_analysis.md"
+}
