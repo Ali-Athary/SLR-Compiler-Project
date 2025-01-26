@@ -25,9 +25,10 @@ def main(arguments):
 	post_order_ast_traverser.node_attributes = ['label', 'text', 'number']
 	traversal = post_order_ast_traverser.traverse_ast(ast.root)
 	# code generation
+	dsl_config = ast_builder_listener.dsl_config
 	code_generator = SlrCodeGenerator()
-	generated_code = code_generator.generate_code(traversal)
-	with open(arguments.output, 'w') as output_file:
+	generated_code = code_generator.generate_code(dsl_config)
+	with open(arguments.output, 'w',encoding='utf-8') as output_file:
 		output_file.write(generated_code)
 
 if __name__ == '__main__':
