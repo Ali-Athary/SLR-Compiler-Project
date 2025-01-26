@@ -30,7 +30,6 @@ def main(arguments):
 	with open(arguments.output, 'w') as output_file:
 		output_file.write(generated_code)
 
-
 if __name__ == '__main__':
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('-i', '--input', help='Input source', default=r'test.slr')
