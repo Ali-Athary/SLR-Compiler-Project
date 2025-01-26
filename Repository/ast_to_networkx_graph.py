@@ -37,8 +37,8 @@ def show_ast(ast_root_node):
 
     import pydot
     pos = graphviz_layout(graph, prog="dot")
-    nx.draw(graph, pos, node_size=500, labels=nx.get_node_attributes(graph, "label"), alpha=0.5, node_color="cyan",
-            with_labels=True)
+    nx.draw(graph, pos, node_size=300, labels=nx.get_node_attributes(graph, "label"), alpha=0.5, node_color="cyan",
+            with_labels=True,font_size=4)
     # Set margins for the axes so that nodes aren't clipped
     ax = plt.gca()
     ax.margins(0.20)
