@@ -1,4 +1,4 @@
-# Generated from E:/University/Semester6/Compiler/SLR-Compiler-Project/Grammar/Slr.g4 by ANTLR 4.13.1
+# Generated from /home/themhh/git/SLR-Compiler-Project/Grammar/Slr.g4 by ANTLR 4.13.2
 from antlr4 import *
 if "." in __name__:
     from .SlrParser import SlrParser

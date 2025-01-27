@@ -31,7 +31,7 @@ outputPath: 'output_path' STRING mandatory_nl;
 optional_nl : NEWLINE* ;
 mandatory_nl : NEWLINE+ ;
 
-METHID: '"gpt-4"' | '"textrank"';
+METHID: '"gpt-4"' | '"textrank"' | '"gemini"';
 FORMAT: '"markdown"' | '"pdf"';
 LN: '"en"' | '"fa"';
 

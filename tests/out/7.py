@@ -13,9 +13,11 @@ import markdown2
 import pdfkit
 import urllib.parse
 from langdetect import detect
+import google.generativeai as genai
 
-openai_api_key = os.getenv("GPT-Token")
-openai_endpoint = os.getenv("GTP-ENDPOINT")
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+openai_api_key = os.getenv("GPT_Token")
+openai_endpoint = os.getenv("GTP_ENDPOINT")
 
 class Paper:
     def __init__(self, title=None, authors=None, published=None, summary=None, link=None, pdf_link=None):
@@ -130,6 +132,7 @@ class OpenAISummarizer:
             base_url=openai_endpoint,
             api_key=openai_api_key,
         )
+        self.gemini_model = genai.GenerativeModel("gemini-1.5-pro")
 
     def summarize_text(self, text):
         truncated_text = text[:4000]
@@ -150,6 +153,10 @@ class OpenAISummarizer:
                 return summary.strip()
             except:
                 return "Could not generate summary with TextRank."
+        elif self.method == "gemini":
+            prompt = f"Summarize the following text:\n\n{truncated_text}"
+            response = self.gemini_model.generate_content(prompt)
+            return response.text.strip()
         else:
             return "Invalid summarization method specified."
 
