@@ -14,8 +14,6 @@ import pdfkit
 import urllib.parse
 from langdetect import detect
 
-# در صورت نیاز، اینجا می‌توانید کلید OpenAI را ست کنید
-# یا از متغیر محیطی استفاده نمایید
 openai_api_key = os.getenv("GPT-Token")
 openai_endpoint = os.getenv("GTP-ENDPOINT")
 
@@ -41,13 +39,11 @@ class ArxivSearcher:
         base_url = 'http://export.arxiv.org/api/query?'
         query_parts = []
         for term in self.query_terms:
-            term = term.replace('"', '')  # حذف نقل قول‌ها
-            # در عنوان یا چکیده جستجو می‌کنیم
+            term = term.replace('"', '')
             query_parts.append(f'ti:"{term}" OR abs:"{term}"')
 
         query = ' AND '.join(query_parts)
 
-        # بازه سال
         if self.year_range[0] and self.year_range[1]:
             date_from = f"{self.year_range[0]}0101000000"
             date_to = f"{self.year_range[1]}1231235959"
@@ -87,14 +83,13 @@ class PaperFilter:
     def filter(self, papers):
         filtered = []
         for paper in papers:
-            # 1) بررسی کلمات ممنوع در چکیده یا متن
+
             if not self._exclude_keywords_check(paper):
                 continue
-            # 2) بررسی زبان (چکیده)
+
             if not self._language_check(paper):
                 continue
-            # 3) بررسی تعداد صفحات (در صورت نیاز باید PDF دانلود و صفحات شمرده شوند)
-            #   در این مرحله پیاده‌سازی نشده ولی می‌توانید اضافه کنید.
+
             filtered.append(paper)
         return filtered
 
@@ -135,7 +130,7 @@ class OpenAISummarizer:
         )
 
     def summarize_text(self, text):
-        truncated_text = text[:4000]  # جلوگیری از طول بیش از حد
+        truncated_text = text[:4000]
         if self.method == "gpt-4":
             response = self.open_ai_client.chat.completions.create(
                 model="gpt-4o",
@@ -169,7 +164,6 @@ class ArxivAnalysis:
         filtered_papers = self.filterer.filter(papers)
 
         markdown_content = []
-        # عنوان کلی
         markdown_content.append(f"# SLR for: My Research\n\n")
 
         for idx, paper in enumerate(filtered_papers, start=1):
@@ -182,7 +176,6 @@ class ArxivAnalysis:
 
             markdown_content.append(f"**Abstract:** {paper.summary}\n")
 
-            # دانلود PDF و خلاصه کردن
             pdf_file = f"paper_{idx}.pdf"
             try:
                 self.pdf_ops.download_pdf(paper.pdf_link, pdf_file)
@@ -191,32 +184,26 @@ class ArxivAnalysis:
             except Exception as e:
                 overview = f"Error in PDF processing: {str(e)}"
             finally:
-                # پاک کردن فایل PDF (دلخواه)
                 if os.path.exists(pdf_file):
                     os.remove(pdf_file)
 
             markdown_content.append(f"**Overview:** {overview}\n")
             markdown_content.append("\n---\n")
 
-        # تولید خروجی نهایی
         out_format = self.report_config.get("format", "markdown").lower()
         out_path = self.report_config.get("output_path", "report.md")
 
-        with open(out_path, "w", encoding="utf-8") as md_file:
-            md_file.writelines(markdown_content)
-
-        if out_format == "pdf":
+        if out_format == "markdown":
+            with open(out_path, "w", encoding="utf-8") as md_file:
+                md_file.writelines(markdown_content)
+        elif out_format == "pdf":
             html_content = markdown2.markdown("".join(markdown_content))
-            out_pdf = out_path if out_path.endswith(".pdf") else out_path.replace(".md", ".pdf")
-            pdfkit.from_string(html_content, out_pdf)
-            # در صورت تمایل فایل MD موقت را پاک کنید
-            if out_pdf != out_path:
-                pass
+            pdfkit.from_string(html_content, out_path)
 
 def main():
     print("=== Auto-Generated SLR Pipeline ===")
     print("Topic:", "My Research")
-    # مقداردهی اجزای تحلیل
+
     searcher = ArxivSearcher(
         query_terms=['AI', 'machine learning'],
         year_range=(2010, 2023),
