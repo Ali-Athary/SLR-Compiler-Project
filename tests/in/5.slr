@@ -1,11 +1,11 @@
 topic "Advancements in Renewable Energy"
 search {
-    query ["renewable energy", "solar power", "wind energy"]
+    query ["renewable energy", "wind energy"]
     year_range 2010 to 2023
     max_results 3
 }
 filters {
-    exclude_keywords ["advertisement", "promotional"]
+    exclude_keywords ["advertisement"]
     min_pages 9
     languages ["en", "fa"]
 }

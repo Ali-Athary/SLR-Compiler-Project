@@ -11,7 +11,7 @@ filters {
 }
 analyze {
     summarize {
-        method "gpt-4"
+        method "gemini"
         max_length 250
     }
     extract_fields ["Abstract", "Conclusion", "Implications"]

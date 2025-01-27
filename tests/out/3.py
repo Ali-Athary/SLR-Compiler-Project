@@ -145,7 +145,7 @@ class OpenAISummarizer:
                 ],
                 max_tokens=self.max_length
             )
-            return response["choices"][0].message.content.strip()
+            return response.choices[0].message.content.strip()
         elif self.method == "textrank":
             from gensim.summarization.summarizer import summarize
             try:
@@ -222,7 +222,7 @@ def main():
         min_pages=8,
         languages=['en', 'fa']
     )
-    summarizer = OpenAISummarizer(method="gpt-4", max_length=250)
+    summarizer = OpenAISummarizer(method="gemini", max_length=250)
     pdf_ops = PDFOperations()
 
     report_config = {

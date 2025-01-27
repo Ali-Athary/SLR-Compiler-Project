@@ -145,7 +145,7 @@ class OpenAISummarizer:
                 ],
                 max_tokens=self.max_length
             )
-            return response["choices"][0].message.content.strip()
+            return response.choices[0].message.content.strip()
         elif self.method == "textrank":
             from gensim.summarization.summarizer import summarize
             try:
@@ -213,12 +213,12 @@ def main():
     print("Topic:", "Advancements in Renewable Energy")
 
     searcher = ArxivSearcher(
-        query_terms=['renewable energy', 'solar power', 'wind energy'],
+        query_terms=['renewable energy', 'wind energy'],
         year_range=(2010, 2023),
         max_results=3
     )
     filterer = PaperFilter(
-        exclude_keywords=['advertisement', 'promotional'],
+        exclude_keywords=['advertisement'],
         min_pages=9,
         languages=['en', 'fa']
     )

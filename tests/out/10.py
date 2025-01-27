@@ -145,7 +145,7 @@ class OpenAISummarizer:
                 ],
                 max_tokens=self.max_length
             )
-            return response["choices"][0].message.content.strip()
+            return response.choices[0].message.content.strip()
         elif self.method == "textrank":
             from gensim.summarization.summarizer import summarize
             try:
