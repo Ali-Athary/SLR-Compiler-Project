@@ -1,5 +1,4 @@
 from antlr4 import *
-import argparse
 from Repository.ast_to_networkx_graph import show_ast
 from Repository.post_order_ast_traverser import PostOrderASTTraverser
 from gen.SlrLexer import SlrLexer
@@ -7,9 +6,13 @@ from gen.SlrParser import SlrParser
 from Code.SlrCodeGenerator import SlrCodeGenerator
 from Code.SlrCustomListener import SlrCustomListener
 
+class Argument:
+	def __init__(self, _in, _out):
+		self.input = _in
+		self.output = _out
 
-def main(arguments):
-	stream = FileStream(arguments.input, encoding='utf8')
+def main(argument):
+	stream = FileStream(argument.input, encoding='utf8')
 	lexer = SlrLexer(stream)
 	token_stream = CommonTokenStream(lexer)
 	parser = SlrParser(token_stream)
@@ -28,12 +31,10 @@ def main(arguments):
 	dsl_config = ast_builder_listener.dsl_config
 	code_generator = SlrCodeGenerator()
 	generated_code = code_generator.generate_code(dsl_config)
-	with open(arguments.output, 'w',encoding='utf-8') as output_file:
+	with open(argument.output, 'w',encoding='utf-8') as output_file:
 		output_file.write(generated_code)
 
 if __name__ == '__main__':
-	argparser = argparse.ArgumentParser()
-	argparser.add_argument('-i', '--input', help='Input source', default=r'test.slr')
-	argparser.add_argument('-o', '--output', help='Output path', default=r'test_output.py')
-	args = argparser.parse_args()
-	main(args)
+	for i in range(1, 11):
+		arg = Argument(f"tests/in/{i}.slr", f"tests/out/{i}.py")
+		main(arg)

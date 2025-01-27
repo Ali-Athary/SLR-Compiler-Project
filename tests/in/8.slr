@@ -1,0 +1,24 @@
+topic "My Research"
+search {
+    query ["AI", "machine learning"]
+    year_range 2010 to 2023
+    max_results 10
+}
+filters {
+    exclude_keywords ["beginner", "tutorial"]
+    min_pages 5
+    languages ["en", "fa"]
+}
+analyze {
+    summarize {
+        method "gpt-4"
+        max_length 300
+    }
+    extract_fields ["Introduction", "Conclusion"]
+    keyword_cloud true
+}
+report {
+    format "pdf"
+    include_metadata true
+    output_path "report.pdf"
+}
