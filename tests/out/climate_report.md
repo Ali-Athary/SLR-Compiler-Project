@@ -21,7 +21,7 @@ method of ensembling them. Further, this can be used to foretell the rise in
 global temperature and to ground crucial policy decisions like the adoption of
 electric vehicles. To estimate emissions from vehicles, we used machine
 learning, deep learning, and ensemble learning on a massive dataset.
-**Overview:** Error in PDF processing: No module named 'gensim.summarization'
+**Overview:** The study by Samveg Shah and colleagues explores the use of artificial intelligence techniques, specifically machine learning and deep learning, to predict CO2 emissions from cars more accurately than current governmental methods. With transportation being a significant contributor to greenhouse gas emissions, particularly CO2, their research aims to address discrepancies between official emissions data and real-world automotive performance. The analysis utilizes a large dataset to evaluate various algorithms and an ensemble learning approach to enhance prediction accuracy. This approach could support critical policy decisions, like the promotion of electric vehicles, by providing more accurate predictions of emissions and potentially foretelling global temperature changes. The study highlights the significant contribution of personal vehicles to CO2 emissions within the EU and the challenges in reducing these emissions. The research ultimately calls for innovative methods to bridge the gap between laboratory measurements and actual emissions, proposing machine learning as a viable solution.
 
 ---
 ## Paper 2
@@ -45,6 +45,6 @@ HESS. Case studies demonstrate the feasibility of the proposed OHRES system to
 power offshore platforms. The economic analysis reports the planning cost for
 the proposed OHRES system under different resilience levels, which may benefit
 the decision to balance the carbon emission and investment cost.
-**Overview:** Error in PDF processing: No module named 'gensim.summarization'
+**Overview:** The paper by Cunzhi Zhao proposes a novel offshore hybrid renewable energy sources (OHRES) system to address the CO2 emissions from offshore oil and gas platforms, which consume around 16 TWh of electricity globally, mainly powered by diesel generators and gas turbines. The OHRES system utilizes offshore wind turbines (WT) to replace traditional fossil fuels, complemented by battery energy storage systems (BESS) and hydrogen energy storage systems (HESS) to balance the intermittent nature of wind energy. The study also incorporates resilience models to further enhance this system's reliability by storing additional energy in BESS and/or HESS. Case studies are provided to demonstrate the feasibility of powering offshore platforms with the OHRES system. The economic analysis included in the study offers insights into the planning costs at various resilience levels, aiding in decision-making to balance carbon emissions against investment costs. The paper focuses on the potential of combining renewable energy sources to achieve zero CO2 emissions from offshore platforms, contributing to the mitigation of climate change.
 
 ---

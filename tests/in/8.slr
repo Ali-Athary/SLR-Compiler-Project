@@ -11,7 +11,7 @@ filters {
 }
 analyze {
     summarize {
-        method "textrank"
+        method "gpt-4"
         max_length 300
     }
     extract_fields ["Introduction", "Methodology"]

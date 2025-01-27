@@ -222,7 +222,7 @@ def main():
         min_pages=15,
         languages=['en']
     )
-    summarizer = OpenAISummarizer(method="textrank", max_length=300)
+    summarizer = OpenAISummarizer(method="gpt-4", max_length=300)
     pdf_ops = PDFOperations()
 
     report_config = {
