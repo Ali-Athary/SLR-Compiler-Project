@@ -6,7 +6,7 @@
 
 import requests
 import feedparser
-import openai
+from openai import OpenAI
 from PyPDF2 import PdfReader
 import os
 import markdown2
@@ -16,7 +16,8 @@ from langdetect import detect
 
 # در صورت نیاز، اینجا می‌توانید کلید OpenAI را ست کنید
 # یا از متغیر محیطی استفاده نمایید
-openai.api_key = "YOUR_OPENAI_API_KEY"
+openai_api_key = os.getenv("GPT-Token")
+openai_endpoint = os.getenv("GTP-ENDPOINT")
 
 class Paper:
     def __init__(self, title=None, authors=None, published=None, summary=None, link=None, pdf_link=None):
@@ -128,19 +129,23 @@ class OpenAISummarizer:
     def __init__(self, method="gpt-4", max_length=300):
         self.method = method
         self.max_length = max_length
+        self.open_ai_client  = OpenAI(
+            base_url=openai_endpoint,
+            api_key=openai_api_key,
+        )
 
     def summarize_text(self, text):
         truncated_text = text[:4000]  # جلوگیری از طول بیش از حد
         if self.method == "gpt-4":
-            response = openai.ChatCompletion.create(
-                model="gpt-4",
+            response = self.open_ai_client.chat.completions.create(
+                model="gpt-4o",
                 messages=[
                     {"role": "system", "content": "You are an academic paper summarizer."},
                     {"role": "user", "content": f"Summarize the following text:\n\n{truncated_text}" }
                 ],
                 max_tokens=self.max_length
             )
-            return response["choices"][0]["message"]["content"].strip()
+            return response["choices"][0].message.content.strip()
         elif self.method == "textrank":
             from gensim.summarization.summarizer import summarize
             try:
@@ -215,7 +220,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['AI', 'machine learning'],
         year_range=(2010, 2023),
-        max_results=10
+        max_results=2
     )
     filterer = PaperFilter(
         exclude_keywords=['beginner', 'tutorial'],

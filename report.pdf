@@ -1,0 +1,59 @@
+# SLR for: My Research
+
+## Paper 1
+**Title:** Machine Learning (ML)-assisted Beam Management in millimeter (mm)Wave
+  Distributed Multiple Input Multiple Output (D-MIMO) systems
+**Authors:** Karthik R M, Dhiraj Nagaraja Hegde, Muris Sarajlic, Abhishek Sarkar
+**Published:** 2023-12-30T09:24:19Z
+**Link:** http://arxiv.org/abs/2401.05422v1
+**Abstract:** Beam management (BM) protocols are critical for establishing and maintaining
+connectivity between network radio nodes and User Equipments (UEs). In
+Distributed Multiple Input Multiple Output systems (D-MIMO), a number of access
+points (APs), coordinated by a central processing unit (CPU), serves a number
+of UEs. At mmWave frequencies, the problem of finding the best AP and beam to
+serve the UEs is challenging due to a large number of beams that need to be
+sounded with Downlink (DL) reference signals. The objective of this paper is to
+investigate whether the best AP/beam can be reliably inferred from sounding
+only a small subset of beams and leveraging AI/ML for inference of best
+beam/AP. We use Random Forest (RF), MissForest (MF) and conditional Generative
+Adversarial Networks (c-GAN) for demonstrating the performance benefits of
+inference.
+**Overview:** Error in PDF processing: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+
+---
+## Paper 2
+**Title:** A Quick Primer on Machine Learning in Wireless Communications
+**Authors:** Faris B. Mismar
+**Published:** 2023-12-29T18:04:11Z
+**Link:** http://arxiv.org/abs/2312.17713v4
+**Abstract:** This is our third (and final) issue of the quick primer on the use of Python
+to build a wireless communications prototype. This prototype simulates
+multiple-input and multiple-output (MIMO) systems for a single orthogonal
+frequency division multiplexing (OFDM) symbol. In addition, it shows several
+artificial intelligence (AI) and machine learning (ML) use cases with code
+implementation. The intent of this primer is to empower the reader with the
+means to efficiently create reproducible simulations related to AI and ML in
+wireless communications. This primer has sprung from a draft aligned with the
+syllabus of a graduate course (EESC 7v86), which we created to be first taught
+in Fall 2022.
+**Overview:** Error in PDF processing: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+
+---
