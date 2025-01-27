@@ -11,7 +11,7 @@ filters {
 }
 analyze {
     summarize {
-        method "textrank"
+        method "hf"
         max_length 200
     }
     extract_fields ["Abstract", "Discussion"]

@@ -66,7 +66,8 @@ class SlrCodeGenerator:
         import urllib.parse
         from langdetect import detect
         import google.generativeai as genai
-        
+        from transformers import pipeline
+
         genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
         openai_api_key = os.getenv("GPT_Token")
         openai_endpoint = os.getenv("GTP_ENDPOINT")
@@ -176,7 +177,7 @@ class SlrCodeGenerator:
                     text += page.extract_text() or ""
                 return text
         
-        class OpenAISummarizer:
+        class AISummarizer:
             def __init__(self, method="gpt-4", max_length=300):
                 self.method = method
                 self.max_length = max_length
@@ -185,7 +186,8 @@ class SlrCodeGenerator:
                     api_key=openai_api_key,
                 )
                 self.gemini_model = genai.GenerativeModel("gemini-1.5-pro")
-        
+                self.summarizer = pipeline("summarization", model=self.model_name)
+
             def summarize_text(self, text):
                 truncated_text = text[:4000]
                 if self.method == "gpt-4":
@@ -198,13 +200,14 @@ class SlrCodeGenerator:
                         max_tokens=self.max_length
                     )
                     return response.choices[0].message.content.strip()
-                elif self.method == "textrank":
-                    from gensim.summarization.summarizer import summarize
-                    try:
-                        summary = summarize(text, word_count=self.max_length)
-                        return summary.strip()
-                    except:
-                        return "Could not generate summary with TextRank."
+                elif self.method == "hf":
+                    summary = self.summarizer(
+                        truncated_text,
+                        max_length=self.max_length,
+                        min_length=self.min_length,
+                        do_sample=False
+                    )
+                    return summary[0]['summary_text'].strip()
                 elif self.method == "gemini":
                     prompt = f"Summarize the following text:\\n\\n{{{{truncated_text}}}}"
                     response = self.gemini_model.generate_content(prompt)
@@ -274,7 +277,7 @@ class SlrCodeGenerator:
                 min_pages={min_pages},
                 languages={languages}
             )
-            summarizer = OpenAISummarizer(method="{method}", max_length={max_length})
+            summarizer = AISummarizer(method="{method}", max_length={max_length})
             pdf_ops = PDFOperations()
 
             report_config = {{{{

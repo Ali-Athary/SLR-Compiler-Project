@@ -11,7 +11,7 @@ filters {
 }
 analyze {
     summarize {
-        method "textrank"
+        method "hf"
         max_length 350
     }
     extract_fields ["Methods", "Results", "Implications"]
