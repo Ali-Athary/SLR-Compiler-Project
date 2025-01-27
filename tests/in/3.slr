@@ -1,24 +1,24 @@
-topic "My Research"
+topic "Technological Innovations in Health"
 search {
-    query ["AI", "machine learning"]
-    year_range 2010 to 2023
-    max_results 10
+    query ["health technology", "AI", "wearables"]
+    year_range 2015 to 2023
+    max_results 20
 }
 filters {
-    exclude_keywords ["beginner", "tutorial"]
-    min_pages 5
+    exclude_keywords ["review", "press-release"]
+    min_pages 8
     languages ["en", "fa"]
 }
 analyze {
     summarize {
         method "gpt-4"
-        max_length 300
+        max_length 250
     }
-    extract_fields ["Introduction", "Conclusion"]
+    extract_fields ["Abstract", "Conclusion", "Implications"]
     keyword_cloud true
 }
 report {
     format "pdf"
-    include_metadata true
-    output_path "report.pdf"
+    include_metadata false
+    output_path "health_tech_innovations.pdf"
 }

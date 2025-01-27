@@ -1,24 +1,24 @@
-topic "My Research"
+topic "Advancements in Renewable Energy"
 search {
-    query ["AI", "machine learning"]
+    query ["renewable energy", "solar power", "wind energy"]
     year_range 2010 to 2023
-    max_results 10
+    max_results 18
 }
 filters {
-    exclude_keywords ["beginner", "tutorial"]
-    min_pages 5
+    exclude_keywords ["advertisement", "promotional"]
+    min_pages 9
     languages ["en", "fa"]
 }
 analyze {
     summarize {
         method "gpt-4"
-        max_length 300
+        max_length 400
     }
-    extract_fields ["Introduction", "Conclusion"]
-    keyword_cloud true
+    extract_fields ["Introduction", "Findings"]
+    keyword_cloud false
 }
 report {
     format "pdf"
     include_metadata true
-    output_path "report.pdf"
+    output_path "renewable_energy_advancements.pdf"
 }

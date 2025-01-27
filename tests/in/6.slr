@@ -1,24 +1,24 @@
-topic "My Research"
+topic "Machine Learning in Autonomous Vehicles"
 search {
-    query ["AI", "machine learning"]
-    year_range 2010 to 2023
-    max_results 10
+    query ["autonomous vehicles", "self-driving cars", "machine learning"]
+    year_range 2013 to 2023
+    max_results 25
 }
 filters {
-    exclude_keywords ["beginner", "tutorial"]
-    min_pages 5
-    languages ["en", "fa"]
+    exclude_keywords ["basic", "summary"]
+    min_pages 7
+    languages ["en"]
 }
 analyze {
     summarize {
-        method "gpt-4"
-        max_length 300
+        method "textrank"
+        max_length 350
     }
-    extract_fields ["Introduction", "Conclusion"]
+    extract_fields ["Summary", "Future Work"]
     keyword_cloud true
 }
 report {
-    format "pdf"
-    include_metadata true
-    output_path "report.pdf"
+    format "markdown"
+    include_metadata false
+    output_path "autonomous_vehicles_ml_report.md"
 }

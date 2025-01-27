@@ -1,24 +1,24 @@
-topic "My Research"
+topic "Cybersecurity Threats and Solutions"
 search {
-    query ["AI", "machine learning"]
+    query ["cybersecurity", "threat detection", "network security"]
     year_range 2010 to 2023
-    max_results 10
+    max_results 30
 }
 filters {
-    exclude_keywords ["beginner", "tutorial"]
-    min_pages 5
+    exclude_keywords ["overview", "non-technical"]
+    min_pages 12
     languages ["en", "fa"]
 }
 analyze {
     summarize {
         method "gpt-4"
-        max_length 300
+        max_length 250
     }
-    extract_fields ["Introduction", "Conclusion"]
+    extract_fields ["Threats", "Solutions", "Future Trends"]
     keyword_cloud true
 }
 report {
     format "pdf"
     include_metadata true
-    output_path "report.pdf"
+    output_path "cybersecurity_threats_solutions.pdf"
 }

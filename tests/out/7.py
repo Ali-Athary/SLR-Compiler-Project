@@ -165,7 +165,7 @@ class ArxivAnalysis:
         papers = self.searcher.search()
         filtered_papers = self.filterer.filter(papers)
 
-        markdown_content = [f"# SLR for: My Research\n\n"]
+        markdown_content = [f"# SLR for: Cybersecurity Threats and Solutions\n\n"]
 
         for idx, paper in enumerate(filtered_papers, start=1):
             markdown_content.append(f"## Paper {idx}\n")
@@ -203,25 +203,25 @@ class ArxivAnalysis:
 
 def main():
     print("=== Auto-Generated SLR Pipeline ===")
-    print("Topic:", "My Research")
+    print("Topic:", "Cybersecurity Threats and Solutions")
 
     searcher = ArxivSearcher(
-        query_terms=['AI', 'machine learning'],
+        query_terms=['cybersecurity', 'threat detection', 'network security'],
         year_range=(2010, 2023),
-        max_results=10
+        max_results=30
     )
     filterer = PaperFilter(
-        exclude_keywords=['beginner', 'tutorial'],
-        min_pages=5,
+        exclude_keywords=['overview', 'non-technical'],
+        min_pages=12,
         languages=['en', 'fa']
     )
-    summarizer = OpenAISummarizer(method="gpt-4", max_length=300)
+    summarizer = OpenAISummarizer(method="gpt-4", max_length=250)
     pdf_ops = PDFOperations()
 
     report_config = {
         "format": "pdf",
         "include_metadata": True,
-        "output_path": "report.pdf"
+        "output_path": "cybersecurity_threats_solutions.pdf"
     }
 
     analysis = ArxivAnalysis(searcher, filterer, summarizer, pdf_ops, report_config)

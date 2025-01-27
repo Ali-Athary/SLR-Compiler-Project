@@ -165,7 +165,7 @@ class ArxivAnalysis:
         papers = self.searcher.search()
         filtered_papers = self.filterer.filter(papers)
 
-        markdown_content = [f"# SLR for: My Research\n\n"]
+        markdown_content = [f"# SLR for: Sustainable Agriculture Practices\n\n"]
 
         for idx, paper in enumerate(filtered_papers, start=1):
             markdown_content.append(f"## Paper {idx}\n")
@@ -203,25 +203,25 @@ class ArxivAnalysis:
 
 def main():
     print("=== Auto-Generated SLR Pipeline ===")
-    print("Topic:", "My Research")
+    print("Topic:", "Sustainable Agriculture Practices")
 
     searcher = ArxivSearcher(
-        query_terms=['AI', 'machine learning'],
-        year_range=(2010, 2023),
-        max_results=10
+        query_terms=['sustainable agriculture', 'organic farming', 'agricultural innovation'],
+        year_range=(2008, 2023),
+        max_results=18
     )
     filterer = PaperFilter(
-        exclude_keywords=['beginner', 'tutorial'],
-        min_pages=5,
-        languages=['en', 'fa']
+        exclude_keywords=['introductory', 'basic'],
+        min_pages=8,
+        languages=['en']
     )
-    summarizer = OpenAISummarizer(method="gpt-4", max_length=300)
+    summarizer = OpenAISummarizer(method="textrank", max_length=350)
     pdf_ops = PDFOperations()
 
     report_config = {
-        "format": "pdf",
+        "format": "markdown",
         "include_metadata": True,
-        "output_path": "report.pdf"
+        "output_path": "sustainable_agriculture_practices.md"
     }
 
     analysis = ArxivAnalysis(searcher, filterer, summarizer, pdf_ops, report_config)

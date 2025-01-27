@@ -165,7 +165,7 @@ class ArxivAnalysis:
         papers = self.searcher.search()
         filtered_papers = self.filterer.filter(papers)
 
-        markdown_content = [f"# SLR for: My Research\n\n"]
+        markdown_content = [f"# SLR for: Quantum Computing Progress\n\n"]
 
         for idx, paper in enumerate(filtered_papers, start=1):
             markdown_content.append(f"## Paper {idx}\n")
@@ -203,25 +203,25 @@ class ArxivAnalysis:
 
 def main():
     print("=== Auto-Generated SLR Pipeline ===")
-    print("Topic:", "My Research")
+    print("Topic:", "Quantum Computing Progress")
 
     searcher = ArxivSearcher(
-        query_terms=['AI', 'machine learning'],
-        year_range=(2010, 2023),
+        query_terms=['quantum computing', 'qubits', 'quantum algorithms'],
+        year_range=(2000, 2023),
         max_results=10
     )
     filterer = PaperFilter(
-        exclude_keywords=['beginner', 'tutorial'],
-        min_pages=5,
-        languages=['en', 'fa']
+        exclude_keywords=['intro', 'news'],
+        min_pages=15,
+        languages=['en']
     )
-    summarizer = OpenAISummarizer(method="gpt-4", max_length=300)
+    summarizer = OpenAISummarizer(method="textrank", max_length=300)
     pdf_ops = PDFOperations()
 
     report_config = {
-        "format": "pdf",
-        "include_metadata": True,
-        "output_path": "report.pdf"
+        "format": "markdown",
+        "include_metadata": False,
+        "output_path": "quantum_computing_progress.md"
     }
 
     analysis = ArxivAnalysis(searcher, filterer, summarizer, pdf_ops, report_config)
