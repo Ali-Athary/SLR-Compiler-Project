@@ -134,7 +134,7 @@ class AISummarizer:
             api_key=openai_api_key,
         )
         self.gemini_model = genai.GenerativeModel("gemini-1.5-pro")
-        self.summarizer = pipeline("summarization", model=self.model_name)
+        self.summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
     def summarize_text(self, text):
         truncated_text = text[:4000]
