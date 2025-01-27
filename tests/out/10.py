@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['sustainable agriculture', 'organic farming', 'agricultural innovation'],
         year_range=(2008, 2023),
-        max_results=18
+        max_results=3
     )
     filterer = PaperFilter(
         exclude_keywords=['introductory', 'basic'],

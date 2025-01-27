@@ -2,7 +2,7 @@ topic "Artificial Intelligence in Healthcare"
 search {
     query ["AI healthcare", "medical AI", "diagnostics"]
     year_range 2015 to 2023
-    max_results 22
+    max_results 6
 }
 filters {
     exclude_keywords ["basics", "guide"]

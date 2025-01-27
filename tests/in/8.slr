@@ -2,7 +2,7 @@ topic "Quantum Computing Progress"
 search {
     query ["quantum computing", "qubits", "quantum algorithms"]
     year_range 2000 to 2023
-    max_results 10
+    max_results 2
 }
 filters {
     exclude_keywords ["intro", "news"]

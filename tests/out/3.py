@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['health technology', 'AI', 'wearables'],
         year_range=(2015, 2023),
-        max_results=20
+        max_results=4
     )
     filterer = PaperFilter(
         exclude_keywords=['review', 'press-release'],

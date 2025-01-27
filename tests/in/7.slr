@@ -2,7 +2,7 @@ topic "Cybersecurity Threats and Solutions"
 search {
     query ["cybersecurity", "threat detection", "network security"]
     year_range 2010 to 2023
-    max_results 30
+    max_results 1
 }
 filters {
     exclude_keywords ["overview", "non-technical"]

@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['cryptocurrency', 'blockchain', 'Bitcoin'],
         year_range=(2018, 2023),
-        max_results=12
+        max_results=1
     )
     filterer = PaperFilter(
         exclude_keywords=['introductory', 'guide'],

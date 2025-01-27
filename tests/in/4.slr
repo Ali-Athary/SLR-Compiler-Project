@@ -2,7 +2,7 @@ topic "Cryptocurrency Trends"
 search {
     query ["cryptocurrency", "blockchain", "Bitcoin"]
     year_range 2018 to 2023
-    max_results 12
+    max_results 1
 }
 filters {
     exclude_keywords ["introductory", "guide"]

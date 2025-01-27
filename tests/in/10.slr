@@ -2,7 +2,7 @@ topic "Sustainable Agriculture Practices"
 search {
     query ["sustainable agriculture", "organic farming", "agricultural innovation"]
     year_range 2008 to 2023
-    max_results 18
+    max_results 3
 }
 filters {
     exclude_keywords ["introductory", "basic"]

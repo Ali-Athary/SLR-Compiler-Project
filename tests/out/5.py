@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['renewable energy', 'solar power', 'wind energy'],
         year_range=(2010, 2023),
-        max_results=18
+        max_results=3
     )
     filterer = PaperFilter(
         exclude_keywords=['advertisement', 'promotional'],

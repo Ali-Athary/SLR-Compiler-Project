@@ -172,7 +172,7 @@ class ArxivAnalysis:
         papers = self.searcher.search()
         filtered_papers = self.filterer.filter(papers)
 
-        markdown_content = [f"# SLR for: Climate Change and Policy\n\n"]
+        markdown_content = [f"# SLR for: Climate Change\n\n"]
 
         for idx, paper in enumerate(filtered_papers, start=1):
             markdown_content.append(f"## Paper {idx}\n")
@@ -210,12 +210,12 @@ class ArxivAnalysis:
 
 def main():
     print("=== Auto-Generated SLR Pipeline ===")
-    print("Topic:", "Climate Change and Policy")
+    print("Topic:", "Climate Change")
 
     searcher = ArxivSearcher(
-        query_terms=['climate change', 'policy', 'CO2 emissions'],
+        query_terms=['climate change', 'CO2 emissions'],
         year_range=(2005, 2022),
-        max_results=15
+        max_results=2
     )
     filterer = PaperFilter(
         exclude_keywords=['blog', 'advertisement'],
@@ -228,7 +228,7 @@ def main():
     report_config = {
         "format": "markdown",
         "include_metadata": True,
-        "output_path": "climate_policy_report.md"
+        "output_path": "climate_report.md"
     }
 
     analysis = ArxivAnalysis(searcher, filterer, summarizer, pdf_ops, report_config)

@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['cybersecurity', 'threat detection', 'network security'],
         year_range=(2010, 2023),
-        max_results=30
+        max_results=1
     )
     filterer = PaperFilter(
         exclude_keywords=['overview', 'non-technical'],

@@ -2,7 +2,7 @@ topic "Technological Innovations in Health"
 search {
     query ["health technology", "AI", "wearables"]
     year_range 2015 to 2023
-    max_results 20
+    max_results 4
 }
 filters {
     exclude_keywords ["review", "press-release"]

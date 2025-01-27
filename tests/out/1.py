@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['AI', 'machine learning'],
         year_range=(2010, 2023),
-        max_results=10
+        max_results=3
     )
     filterer = PaperFilter(
         exclude_keywords=['beginner', 'tutorial'],

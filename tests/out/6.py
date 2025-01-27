@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['autonomous vehicles', 'self-driving cars', 'machine learning'],
         year_range=(2013, 2023),
-        max_results=25
+        max_results=5
     )
     filterer = PaperFilter(
         exclude_keywords=['basic', 'summary'],

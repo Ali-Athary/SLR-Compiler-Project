@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['quantum computing', 'qubits', 'quantum algorithms'],
         year_range=(2000, 2023),
-        max_results=10
+        max_results=2
     )
     filterer = PaperFilter(
         exclude_keywords=['intro', 'news'],

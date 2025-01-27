@@ -215,7 +215,7 @@ def main():
     searcher = ArxivSearcher(
         query_terms=['AI healthcare', 'medical AI', 'diagnostics'],
         year_range=(2015, 2023),
-        max_results=22
+        max_results=6
     )
     filterer = PaperFilter(
         exclude_keywords=['basics', 'guide'],
